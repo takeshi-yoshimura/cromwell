@@ -69,6 +69,7 @@ object Dependencies {
   private val jacksonV = "2.13.0"
   private val janinoV = "3.1.6"
   private val jsr305V = "3.0.2"
+  private val k8sClientV = "15.0.0"
   private val kindProjectorV = "0.10.0"
   private val kittensV = "2.3.2"
   private val liquibaseV = "4.8.0"
@@ -328,6 +329,11 @@ object Dependencies {
       exclude("com.google.guava", "guava-jdk5")
   ) ++ googleGenomicsV2Alpha1Dependency ++ googleLifeSciencesV2BetaDependency
 
+  val k8sDependencies = List(
+    "io.kubernetes" % "client-java" % k8sClientV,
+    "io.kubernetes" % "client-java-extended" % k8sClientV
+  )
+
   private val aliyunOssDependencies = List(
     "com.aliyun.oss" % "aliyun-sdk-oss" % aliyunOssV
   )
@@ -363,7 +369,7 @@ object Dependencies {
     "com.lihaoyi" %% "pprint" % pprintV,
   ) ++ catsDependencies ++ configDependencies ++ slf4jFacadeDependencies ++ refinedTypeDependenciesList
 
-  val cloudSupportDependencies: List[ModuleID] = googleApiClientDependencies ++ googleCloudDependencies ++ betterFilesDependencies ++ awsCloudDependencies
+  val cloudSupportDependencies: List[ModuleID] = googleApiClientDependencies ++ googleCloudDependencies ++ betterFilesDependencies ++ awsCloudDependencies ++ k8sDependencies
 
   val databaseSqlDependencies: List[ModuleID] = List(
     "commons-io" % "commons-io" % commonsIoV,
